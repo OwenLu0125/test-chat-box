@@ -1,6 +1,11 @@
 import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 
+// 确保 API 密钥存在
+if (!process.env.OPENAI_API_KEY) {
+  throw new Error('Missing OPENAI_API_KEY environment variable');
+}
+
 // Create an OpenAI API client
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || "",
